@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/Library.svg";
 import { Link } from "react-router-dom";
-import Books from "../pages/Books";
+
 const Footer = () => {
     return (
      <footer>

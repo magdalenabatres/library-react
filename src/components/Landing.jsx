@@ -2,8 +2,6 @@ import React from "react";
 import UndrawBooks from '../assets/Undraw_Books.svg';
 import Waves from '../assets/wave.svg';
 import {Link} from "react-router-dom";
-import Feactures from "./Features";
-import Explore from "./Explore";
 
 const Landing = ({icon}) => {
   return ( 

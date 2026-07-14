@@ -1,27 +1,73 @@
-
-import Footer from './components/Footer';
+import React, {useState, useEffect} from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Books from './pages/Books';
-import {books} from './data';
 import BookInfo from './pages/BooksInfo';
-import { Link } from "react-router-dom";
+import { books } from './data';
+import Cart from './pages/Cart';
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  function addToCart(book){
+    setCart([...cart, { ...book, quantity: 1}]);
+  }
+
+  function changeQuantity(book, quantity) {
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === book.id
+          ? { ...item, quantity: Number(quantity) }
+          : item
+      )
+    );
+  }
+
+  function removeItem(item){
+    setCart(cart.filter(cartItem => cartItem.id !== item.id));
+  } 
+
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += item.quantity;
+    });
+    return counter; 
+  }
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart])
+
   return (
-  <Router>  
-     <div className="App">
-    <Nav />  
-    <Route path="/" exact component={Home} />
-    <Route path="/Books" render={() =>  <Books books={books} />} />
-    <Route path="/Books/1" render={() => <BookInfo books={books} />} />
-    <Footer />
-    </div>
-   </Router> 
+    <Router>
+      <div className="App">
+        {/* PASA LA FUNCIÓN, NO EL RESULTADO */}
+        <Nav numberOfItems={numberOfItems} />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" element={<Books books={books} />} />
+          <Route path="/books/:id"
+            element={<BookInfo books={books} addToCart={addToCart} cart={cart} />}
+          />
+          <Route path="/cart" 
+            element={
+              <Cart 
+                books={books} 
+                cart={cart}
+                changeQuantity={changeQuantity}
+                removeItem={removeItem}
+              />
+            } 
+          />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

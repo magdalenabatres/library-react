@@ -30,8 +30,10 @@ nav {
 }
 
 img {
-  height: 100%;
-  width: 100%;
+max-width: 100%;
+  height: auto;
+/*  height: 100%;
+  width: 100%;*/
 }
 
 p {
@@ -75,18 +77,6 @@ button {
 
 button:active {
   transform: translateY(1px);
-}
-
-.btn {
-  background-color: #7342d6;
-  color: white;
-  padding: 12px 24px;
-  font-size: 20px;
-  border-radius: 4px;
-  border: none;
-}
-
-.purple {
   color: #7342d6;
 }
 
@@ -408,6 +398,7 @@ FEATURES
 .book__title--skeleton {
   height: 21px;
   width: 100%;
+
 }
 
 .book__rating--skeleton {

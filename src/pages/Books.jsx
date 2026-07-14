@@ -24,7 +24,7 @@ const Books = ({books: initialBooks}) => {
 
   return (
    <div id="books__body">
-     <main id="books__body">
+     <main className="books__body">
         <section>
             <div className='books__container'>
                 <div className='row'>
@@ -32,7 +32,9 @@ const Books = ({books: initialBooks}) => {
                         <h2 className="section__title books__header--title">
                             All <span className="purple">Books</span>
                         </h2>
-                        <select id="filter" defaultValue="DEFAULT" onChange={(event) => filterBooks(event.target.value)}>
+                        <select id="filter" 
+                           defaultValue="DEFAULT"
+                           onChange={(event) => filterBooks(event.target.value)}>
                             <option value="DEFAULT" disabled>
                                 Sort
                              </option>
