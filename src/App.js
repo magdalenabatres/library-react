@@ -5,8 +5,9 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Books from './pages/Books';
 import BookInfo from './pages/BooksInfo';
-import { books } from './data';
 import Cart from './pages/Cart';
+import { books } from './data';
+
 
 function App() {
   const [cart, setCart] = useState([]);

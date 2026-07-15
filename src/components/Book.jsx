@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import Rating from './ui/Rating';
 import Price from './ui/Price';
@@ -7,27 +7,30 @@ const Book = ({ book }) => {
   const [img, setImg] = useState(null);
   const mountedRef = useRef(true);
 
-  useEffect (() => {
-    const image =  new Image();
+  useEffect(() => {
+    const image = new Image();
     image.src = book.url;
+
     image.onload = () => {
       setTimeout(() => {
         if (mountedRef.current) {
           setImg(image);
         }
-         
       }, 300);
     };
+
+    image.onerror = () => {
+      console.log("Error cargando imagen:", book.url);
+    };
+
     return () => {
-        //when the component unmounts
-      mountedRef.current = false;  
-       };
-    
+      mountedRef.current = false;
+    };
   }, [book.url]);
 
   return (
     <div className="book">
-      { img ? (   
+      {img ? (
         <>
           <Link to={`/books/${book.id}`}>
             <figure className="book__img--wrapper">
@@ -35,7 +38,6 @@ const Book = ({ book }) => {
                 src={img.src}
                 alt={book.title}
                 className="book__img"
-                
               />
             </figure>
           </Link>
@@ -43,24 +45,23 @@ const Book = ({ book }) => {
           <div className="book__title">
             <Link to={`/books/${book.id}`} className="book__title--link">
               {book.title}
-          </Link>
+            </Link>
           </div>
 
           <Rating rating={book.rating} />
-          <Price salePrice={book.salePrice}
-           originalPrice={book.originalPrice} />
-      
-      </>
-     ) : (
-       <>
-    
+          <Price
+            salePrice={book.salePrice}
+            originalPrice={book.originalPrice}
+          />
+        </>
+      ) : (
+        <>
           <div className="book__img--skeleton skeleton"></div>
           <div className="skeleton book__title--skeleton"></div>
           <div className="skeleton book__rating--skeleton"></div>
           <div className="skeleton book__price--skeleton"></div>
         </>
       )}
-
     </div>
   );
 };
