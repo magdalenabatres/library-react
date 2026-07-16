@@ -9,6 +9,10 @@ import { faTimes, faBars, faShoppingCart } from "@fortawesome/free-solid-svg-ico
 const Nav = ({ numberOfItems }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+function closeMenu() {
+    setMenuOpen(false);
+  }
+
   return (
     <nav>
       <div className="nav__container">
@@ -42,18 +46,18 @@ const Nav = ({ numberOfItems }) => {
         </ul>
 
         <div className={`menu__backdrop ${menuOpen ? "menu--open" : ""}`}>
-          <button className="btn__menu btn__menu--close" onClick={() => setMenuOpen(false)}>
+          <button className="btn__menu btn__menu--close" onClick={closeMenu}>
             <FontAwesomeIcon icon={faTimes} />
           </button>
           <ul className="menu__links">
             <li className="menu__list">
-              <Link to="/" className="menu__link">Home</Link>
+              <Link to="/" className="menu__link"  onClick={closeMenu}>Home</Link>
             </li>
             <li className="menu__list">
-              <Link to="/books" className="menu__link">Books</Link>
+              <Link to="/books" className="menu__link" onClick={closeMenu}>Books</Link>
             </li>
             <li className="menu__list">
-              <Link to="/cart" className="menu__link">Cart</Link>
+              <Link to="/cart" className="menu__link" onClick={closeMenu}>Cart</Link>
             </li>
           </ul>
         </div>

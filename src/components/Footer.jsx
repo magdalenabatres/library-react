@@ -19,7 +19,7 @@ const Footer = () => {
                 <Link to="/Books" className="footer__link">Books</Link>
                 <Link to="/" className="footer__link">Cart</Link>
              </div>
-             <div className="footer__copyright">Copyright &copy; 2026 Library. All rights reserved.</div>
+             <div className="footer__copyright">© 2026 Magdalena Batres Campos — Library Platform | All Rights Reserved</div>
         </div>
        </div>  
      </footer>

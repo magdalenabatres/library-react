@@ -11,7 +11,7 @@ const Landing = ({icon}) => {
             <div className="header__description">
                 <h1>Welcome to Our <span className="purple">Library Platform</span></h1>
                 <h2>Discover your next favorite book</h2>
-                <Link to='#features'>
+                <Link to="/books">
                     <button className="btn">Explore Now</button>
                 </Link>
             </div>

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -6,14 +5,14 @@ import Rating from "../components/ui/Rating";
 import Price from "../components/ui/Price";
 import Book from "../components/Book";
 import { useParams } from "react-router-dom";
-
+/*import React, { useState } from "react";*/
 
 
 
 const BookInfo =({books, addToCart, cart}) => {
 const { id } = useParams();
 const book = books.find(book => +book.id === +id);
-const [added,setAdded] = useState(false);
+/*const [added,setAdded] = useState(false);*/
 
 function addBookToCart(book){ 
     addToCart(book);  
@@ -67,10 +66,10 @@ function bookExistsOnCart(){
                                </div>
                                {bookExistsOnCart() ? (
                                 <Link to ={`/cart`} className = "book__link">
-                                    <button className="btn">Checkout</button>
-                                   </Link>
+                                    <button className="btn btn__checkout">Checkout</button>
+                                </Link>
                                   ) : (
-                               <button className="btn" onClick={() => addBookToCart(book)}>
+                               <button className="btn btn__checkout" onClick={() => addBookToCart(book)}>
                                   Add to Cart
                                </button>
                              

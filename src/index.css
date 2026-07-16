@@ -722,9 +722,11 @@ select {
   align-items: flex-end;
   padding: 0 24px;
   width: 100%;
-  max-width: 300px;
+  width: auto;
+  padding: 12px 24px;
   margin-left: auto;
   font-size: 16px;
+  margin-bottom: 4rem; /* separa el bloque del footer */
 }
 
 .total__item {
@@ -756,10 +758,38 @@ select {
   max-width: 400px;
 }
 
-.btn__checkout {
-  width: 100%;
+ 
+.btn {
+  display: inline-block;     /* el botón se ajusta al contenido */
+  padding: 12px 24px;        /* espacio interno para que el texto respire */
   font-size: 16px;
-  padding: 12px 0;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #7342d6;
+  color: white;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;       /* evita que el texto se parta en dos líneas */
+}
+
+.btn__checkout {
+  background-color: #7342d6;
+  color: white;
+  width: auto;
+  padding: 12px 24px;
+  margin-bottom: 3rem;
+}
+
+
+
+
+.btn:hover{
+  background-color: #5a35b1; /* tono más oscuro al pasar el mouse */
+}
+
+.btn__checkout:hover {
+  background-color: #5a35b1; /* tono más oscuro al pasar el mouse */
 }
 
 
